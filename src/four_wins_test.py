@@ -86,12 +86,12 @@ def test_is_current_player_input_legitimate():
 def test_does_column_has_space():
     board = create_board(5,5)
     # column 0 is full
-    current_column_userinput=1
-    board[:,one_to_zero_indexing(current_column_userinput)] = 1
-    assert does_column_has_space(board,current_column_userinput) == False
+    current_column_userinput_1=1
+    board[:,one_to_zero_indexing(current_column_userinput_1)] = 1
+    assert does_column_has_space(board,current_column_userinput_1) == False
     # column 2 is empty
-    current_column_userinput=2
-    assert does_column_has_space(board,2)
+    current_column_userinput_2=2
+    assert does_column_has_space(board,current_column_userinput_2)
 
 def test_insert_stone():
     # check whether insert function works - test visually: 

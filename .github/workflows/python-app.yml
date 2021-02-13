@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: docker://pandoc/latex
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
@@ -25,8 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         pip install numpy
-        #for pandoc
-        apt-get install texlive
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |

@@ -38,4 +38,7 @@ jobs:
     - name: hallo!
       run: |
         echo 'Edlich!'
-        
+    - name: Documentation
+      run: | 
+        pandoc doc/documentation.md -o doc/documentation.html
+	      pandoc doc/documentation.md -o doc/documentation.pdf

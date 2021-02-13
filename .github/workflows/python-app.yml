@@ -41,4 +41,4 @@ jobs:
     - name: Documentation
       run: | 
         pandoc doc/documentation.md -o doc/documentation.html
-	      pandoc doc/documentation.md -o doc/documentation.pdf
+	pandoc doc/documentation.md -o doc/documentation.pdf

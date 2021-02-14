@@ -39,8 +39,9 @@ jobs:
     - name: hallo!
       run: |
         echo 'Edlich!'
-      	#pandoc doc/documentation.md -o doc/documentation.pdf
-	#pandoc doc/documentation.md -o doc/documentation.html
     - uses: docker://pandoc/latex
       with:
         args: "doc/documentation.md -o doc/documentation.pdf" # gets appended to pandoc command
+    - uses: docker://pandoc/latex
+      with:
+        args: "doc/documentation.md -o doc/documentation.html" # gets appended to pandoc command

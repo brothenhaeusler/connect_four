@@ -8,7 +8,7 @@ See [here](doc/documentation.pdf) - at my documentation
 
 * A [Use case diagram](doc/uml/use_case_diagram_of_the_gaming_website.pdf) that visualizes different use cases for both the users, the admin and the proprietor.
 * A [Sequence diagram](doc/uml/Sequence%20Diagram.pdf) to visualize how different entities of a website 'would' interact in case of a certain procedure of activities.
-* An [Activity diagram](doc/uml/Sequence%20Diagram.pdf) that shows an imaginary string of actions and possibilities, when accessing the website. 
+* An [Activity diagram](doc/uml/Activity%20Diagram.pdf) that shows an imaginary string of actions and possibilities, when accessing the website. 
 
 ### 2 DDD
 I modelled the different domains within a Problem space 

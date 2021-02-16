@@ -15,7 +15,7 @@ The game is modelled after the dimensions of the original connect four game - th
 ### 1 UML
 3 UML diagrams to look at. The diagrams are mostly artificially pumped up :). My core project consists of a command line game.
 
-* A [Use case diagram](doc/uml/Use%20Case%20Diagram%20of%20the%20Gaming%20ebsite.pdf) that visualizes different use cases for both the users, the admin and the proprietor.
+* A [Use case diagram](doc/uml/Use%20Case%20Diagram%20of%20the%20Gaming%20Website.pdf) that visualizes different use cases for both the users, the admin and the proprietor.
 * A [Sequence diagram](doc/uml/Sequence%20Diagram.pdf) to visualize how different entities of a website 'would' interact in case of a certain procedure of activities.
 * An [Activity diagram](doc/uml/Sequence%20Diagram.pdf) that shows an imaginary string of actions and possibilities, when accessing the website. 
 
@@ -33,9 +33,9 @@ I used Sonarqube for delivering the Metrics as required. The results can be acce
 [the cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open when programming)
 # include link
 and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
-* [KISS](doc/clean_code/code_examples/KISS%20in%20practice.png)
+* before: sth about adding 1, modulo, etc.. -- now: embarrassingly [simple](doc/clean_code/code_examples/KISS%20in%20practice.png)
 * [no magic numbers](doc/clean_code/code_examples/no%20magic%20numbers.png)
-* [precise naming](doc/clean_code/code_examples/precise%20naming.png)
+* before: I called the variable 'player' --- now: more [precise naming](doc/clean_code/code_examples/precise%20naming.png)
 * [avoidance of negative conditionals and good commenting](doc/clean_code/code_examples/combination.png)
 
 ### 5 Build Management

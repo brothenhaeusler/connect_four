@@ -50,7 +50,7 @@ The DSL implemented by me is as regards subject matter quite remote from my game
 "Here I stand, I can do no other...". Actually I can't proof but only propose my solution as consistent with the following functional programming principles:
 * only final data structures
 * side effect free functions
-* the use of higher-order functions 
+* the use of higher-order functions (filter)
 * functions as parameters and return values
 * use of an anonymous function (lambda)
 .. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, it most certainly shoots KISS - and for a project as simple as mine, including a higher-order function proofed to b

@@ -34,20 +34,17 @@ I use [make](https://en.wikipedia.org/wiki/Make_(software)) for local build-mana
 [Here](Makefile) is my Makefile.
 
 ### 6 Unit Tests
-[Here](src/four_wins_test.py) they are. They get automatically run using my [Makefile](Makefile) or via GitHub Action. They also include one visual test (commented out) for testing the create_board() function in in [here](src/four_wins_functions.py).  
+[Here](src/four_wins_test.py) they are. They get automatically run using my [Makefile](Makefile) or via GitHub Action. They also include one visual test (commented out) for testing the create_board() function to be found [here](src/four_wins_functions.py).  
 
 ### 7 Continuous Delivery
-I used GitHub Action for that purpose. 
-# do I have to link sth?
+I used GitHub Action for that purpose. See [here](https://github.com/brothenhaeusler/connect_four/actions).
 
 ### 8 IDE
 I used VisualStudio Code for that effect due to recent (last 5 years) developments and investments through Microsoft. 
-Here is my cheatsheet (for Mac)
-# include link
+[Here](doc/ide/VisualStudioCode_shortcuts.docx) is my cheatsheet (for Mac). Unfortunately, it is written in - you probably guessed it - MS Word :). 
 
 ### 9 DSL
-The DSL implemented by me is used independent from my project. It can be accessed here.
-# provide link
+The DSL implemented by me is used independent from my project. It implemented my [2nd favourite topic](doc/dsl/flowers.py) besides writing Clean Code ;):D. Actually the latter can't quite compete with reading [Martin Wolf opinion pieces](https://www.ft.com/martin-wolf). 
 
 ### 10 Functional Programming
 only final data structures

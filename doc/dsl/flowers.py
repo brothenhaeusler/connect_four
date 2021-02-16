@@ -29,7 +29,6 @@ class Flower:
     def calculate_gift_pathos_level(self):
         return int( (self.objective_attraction_level + self.obvious_dating_ingenuity_level) / 2)
     
-
     def __str__(self):
         return "Flower=>" + "[" + self.name + ","+ self.color + ", obvious_dating_ingenuity_level: "  + str(self.obvious_dating_ingenuity_level) + ", objective_attraction_level: " + str(self.objective_attraction_level) + ", estimated_gift_pathos_level: " + str(self.estimated_gift_pathos_level) + "]"
 

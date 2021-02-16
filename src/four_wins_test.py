@@ -1,6 +1,5 @@
 #! /usr/local/opt/python/bin/python3.8
 
-#necessary condition
 from four_wins_functions import (
 create_board,
 is_game_over,

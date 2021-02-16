@@ -15,10 +15,9 @@ The game is modelled after the dimensions of the original connect four game - th
 ### 1 UML
 3 UML diagrams to look at. The diagrams are mostly artificially pumped up :). My core project consists of a command line game.
 
-* A [Use case diagram](doc/uml/Use&#32Case&#32Diagram&#32of&#32the&#32Gaming&#32Website.pdf) that visualizes different use cases for both the users, the admin and the proprietor.
-* A [Sequence diagram](doc/uml/Sequence&#32Diagram.pdf) to visualize how different entities of a website 'would' interact in case of a certain procedure of activities.
-* An [Activity diagram](doc/uml/Sequence&#32Diagram.pdf) that shows an imaginary string of actions and possibilities, when accessing the website. 
-
+* A [Use case diagram](doc/uml/Use%20Case%20Diagram%20of%20the%20Gaming%20ebsite.pdf) that visualizes different use cases for both the users, the admin and the proprietor.
+* A [Sequence diagram](doc/uml/Sequence%20Diagram.pdf) to visualize how different entities of a website 'would' interact in case of a certain procedure of activities.
+* An [Activity diagram](doc/uml/Sequence%20Diagram.pdf) that shows an imaginary string of actions and possibilities, when accessing the website. 
 
 ### 2 DDD
 I modelled the different domains within a Problem space 
@@ -31,12 +30,12 @@ I used Sonarqube for delivering the Metrics as required. The results can be acce
 # include link
 
 ### 4 Clean Code Development
-[the cheatsheet](doc/clean_code/cheatsheet&#32clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open when programming)
+[the cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open when programming)
 # include link
 and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
-* [KISS](doc/clean_code/code_examples/KISS&#32in&#32practice.png)
-* [no magic numbers](doc/clean_code/code_examples/no&#32magic&#32numbers.png)
-* [precise naming](doc/clean_code/code_examples/precise&#32naming.png)
+* [KISS](doc/clean_code/code_examples/KISS%20in%20practice.png)
+* [no magic numbers](doc/clean_code/code_examples/no%20magic%20numbers.png)
+* [precise naming](doc/clean_code/code_examples/precise%20naming.png)
 * [avoidance of negative conditionals and good commenting](doc/clean_code/code_examples/combination.png)
 
 ### 5 Build Management

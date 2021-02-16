@@ -34,8 +34,7 @@ I use [make](https://en.wikipedia.org/wiki/Make_(software)) for local build-mana
 [Here](Makefile) is my Makefile.
 
 ### 6 Unit Tests
-Here<> they are. They get automatically run using CICD 
-# link to Unit tests
+[Here](src/four_wins_test.py) they are. They get automatically run using my [Makefile](Makefile) or via GitHub Action. They also include one visual test (commented out) for testing the create_board() function in in [here](src/four_wins_functions.py).  
 
 ### 7 Continuous Delivery
 I used GitHub Action for that purpose. 

@@ -30,11 +30,12 @@ def does_column_has_space(board, current_player_input_column):
 def walk_recursively_through_pitch(board, one_d_array, current_row, current_column, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted):
     # fundamental decision: what gets inserted into the new _to be array one_d_array_new?
     if current_column == insert_column_0_indexed and current_row == insert_row_0_indexed:
-        #push on a new number, and pop the first number (don't worry about it, it's by design)
-        new_one_d_array=np.append(one_d_array[1:], to_be_inserted)
+        #push on a new number
+        new_one_d_array=np.append(one_d_array, to_be_inserted)
     else:
-        #push on a new number, and pop the first number (don't worry about it, it's by design)
-        new_one_d_array=np.append(one_d_array[1:], board[current_row][current_column])
+        #push on a new number
+        new_one_d_array=np.append(one_d_array, board[current_row][current_column])
+
     # walking one step further through the board now..
      # walked till the end of the row?
     if current_column + 1 == columns:
@@ -58,8 +59,7 @@ def walk_through_pitch_replace_one_number(board, insert_row_0_indexed, insert_co
     rows=board.shape[0]
     columns=board.shape[1]
     # trick: 2D to 1D in order to get functional
-    number_of_places_one_needs_to_transform_a_2D_matrix_into_1D= rows*columns
-    one_d_array=np.zeros(number_of_places_one_needs_to_transform_a_2D_matrix_into_1D, dtype=np.int8)
+    one_d_array=np.zeros(0, dtype=np.int8)
     # we need to call the recursive function with the walking variable current_column (instantiated with 0)
     # as well as a one_d_array --- a 1D data structure that allows push and pop (in contrast to 2D data structures)
     new_one_d_array=walk_recursively_through_pitch(board, one_d_array, 0, 0, rows, columns, insert_row_0_indexed, insert_column_0_indexed,  to_be_inserted)
@@ -214,10 +214,10 @@ def recursive_new_round(board,current_player):
                 new_board=insert_stone(board, current_player_input_column, current_player)
                 # change the current_player 
                 if current_player==1:
-                    current_player=2
+                    new_current_player=2
                 else:
-                    current_player=1
-                recursive_new_round(new_board,current_player)
+                    new_current_player=1
+                recursive_new_round(new_board,new_current_player)
             else:
                 print("Column is already full! - Try again inserting into another column!")
                 recursive_new_round(board,current_player)

@@ -15,10 +15,10 @@ Code execution [here](src/four_wins.py) - and here's my [documentation](doc/docu
 I modelled the different domains within a [problem space](doc/ddd/ddd_problemspace.pdf) and later on carved out the [bounded contexts and the relationships between them](doc/ddd/bounded_contexts_diagram.pdf). Beware the pixie dust of artificialness :).
 
 ### 3 Metrics
-I used Radon for delivering the Metrics as required. This in particular includes the Cyclomatic complexity and the Halstead metrics. The The results can be accessed in my latest [GitHub Workflow](https://github.com/brothenhaeusler/connect_four/actions).
+I used Radon for delivering the Metrics as required. This in particular includes the Cyclomatic complexity and the Halstead metrics. The results can be accessed in my latest [GitHub Workflow](https://github.com/brothenhaeusler/connect_four/actions).
 
 ### 4 Clean Code Development
-[the cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open while programming) and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
+[The cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open while programming) and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
 * before: sth about adding 1, modulo, etc.. -- now: embarrassingly [simple](doc/clean_code/code_examples/KISS%20in%20practice.png)
 * [no magic numbers](doc/clean_code/code_examples/no%20magic%20numbers.png)
 * before: I called the variable 'player' --- now: more [precise naming](doc/clean_code/code_examples/precise%20naming.png)
@@ -29,17 +29,17 @@ I use [make](https://en.wikipedia.org/wiki/Make_(software)) for local build-mana
 [Here](Makefile) is my Makefile.
 
 ### 6 Unit Tests
-[Here](src/four_wins_test.py) they are. They get automatically run using my [Makefile](Makefile) or via GitHub Action. They also include one visual test (commented out) for testing the create_board() function to be found [here](src/four_wins_functional_test.py).  
+[Here](src/four_wins_functional_test.py) they are. They get automatically run using my [Makefile](Makefile) or via [GitHub](https://github.com/brothenhaeusler/connect_four/blob/main/.github/workflows/python-app.yml) [Action](https://github.com/brothenhaeusler/connect_four/actions). They also include one visual test (commented out) for testing the create_board() function to be found [here](src/four_wins_functions_functional.py).  
 
 ### 7 Continuous Delivery
 I used GitHub Action for that purpose. See [here](https://github.com/brothenhaeusler/connect_four/blob/main/.github/workflows/python-app.yml). As can be seen in my latest builds, I included in there: Metrics generation, Unit Testing as well as generating the user documentation for the program. Last time I checked, it was working [fine](https://github.com/brothenhaeusler/connect_four/actions).
 
 ### 8 IDE
 I used VisualStudio Code for that effect due to recent (last 5 years) developments and investments through Microsoft. 
-[Here](doc/ide/VisualStudioCode_shortcuts.docx) is my cheatsheet (for Mac). Unfortunately, it is written in - you probably guessed it - MS Word :). 
+[Here](doc/ide/VisualStudioCode_shortcuts.docx) is my cheatsheet (for Mac). Unfortunately, it was written on - you probably guessed it - MS Word :). 
 
 ### 9 DSL
-The DSL implemented by me is - as regards subject matter - quite remote from my game project. It relates to my [2nd favourite topic](doc/dsl/flowers.py) besides writing Clean Code ;):D. Unfortunately the latter can't quite compete with reading [Martin Wolf opinion pieces](https://www.ft.com/martin-wolf). 
+The DSL implemented by me is - as regards subject matter - quite remote from my game project. It relates to my [2nd favourite topic](doc/dsl/flowers.py) besides writing Clean Code ;):D. Lamentably the latter can't quite compete with reading [Martin Wolf opinion pieces](https://www.ft.com/martin-wolf). 
 
 ### 10 Functional Programming
 "Here I stand, I can do no other...". Actually I can't proof but only propose my solution as consistent with the following functional programming principles:
@@ -49,4 +49,4 @@ The DSL implemented by me is - as regards subject matter - quite remote from my 
 * functions as parameters and return values (filter)
 * use of an anonymous function (lambda)   
 
-.. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, notably the 'final data structure' criterion most certainly shoots KISS. My prejudice is, that that is also the case for a significant part of the experienced programmers. For that matter I also included a mostly functional (without only having final data structures) [readable version of my main functions](src/four_wins_functions.py).
+.. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, notably the 'final data structure' criterion most certainly shoots KISS. My prejudice is, that that is also the case for a significant part of the experienced programmers. For that matter I also included a mostly functional (without only having final data structures) [readable version of my central functions](src/four_wins_functions.py).

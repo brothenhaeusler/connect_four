@@ -5,6 +5,9 @@ import numpy as np
 import random
 import re
 
+
+
+
 def create_board(rows, columns):
     board = np.zeros((rows,columns),dtype=np.int8)
     return board

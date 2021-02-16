@@ -25,36 +25,65 @@ def does_column_has_space(board, current_player_input_column):
         return False
 
 
-# Helper functions for insert_stone. There are much easier ways to do this, but this does not overwrite variables :-)
-def new_board(i,j,empty_slot,column,player_number,board):
-    if (i == empty_slot and j == column):
-        return player_number
+# essentially gives back the transformed 2D board (with the inserted value) in the form of a 1D array.
+# functional!
+def walk_recursively_through_pitch(board, one_d_array, current_row, current_column, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted):
+    # fundamental decision: what gets inserted into the new _to be array one_d_array_new?
+    if current_column == insert_column_0_indexed and current_row == insert_row_0_indexed:
+        #push on a new number, and pop the first number (don't worry about it, it's by design)
+        new_one_d_array=np.append(one_d_array[1:], to_be_inserted)
     else:
-        return board[i,j]
+        #push on a new number, and pop the first number (don't worry about it, it's by design)
+        new_one_d_array=np.append(one_d_array[1:], board[current_row][current_column])
+    # walking one step further through the board now..
+     # walked till the end of the row?
+    if current_column + 1 == columns:
+        # are you at the lower end of the matrix? - then you can't walk any further
+        if current_row +1 ==  rows:
+            return new_one_d_array 
+        else:
+            #only set the new variables in calling the new function
+            # go one row down (rows are in the first dimension)
+            return walk_recursively_through_pitch(board, new_one_d_array, current_row+1, 0, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)
+    else:
+        # just walk down the board one column further
+        return walk_recursively_through_pitch(board, new_one_d_array, current_row, current_column + 1, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)
 
-# this function does not overwrite the variable board, which was not easy to implement...
-# inserts stone, if possible, otherwise prints "move not permitted" and returns the board unchanged
+
+
+#preparation and postpreparation function for walk_recurively_through_pitch() 
+# functional!
+# essentially returns a new 2D board with to_be_inserted at the right place
+def walk_through_pitch_replace_one_number(board, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted):
+    rows=board.shape[0]
+    columns=board.shape[1]
+    # trick: 2D to 1D in order to get functional
+    number_of_places_one_needs_to_transform_a_2D_matrix_into_1D= rows*columns
+    one_d_array=np.zeros(number_of_places_one_needs_to_transform_a_2D_matrix_into_1D, dtype=np.int8)
+    # we need to call the recursive function with the walking variable current_column (instantiated with 0)
+    # as well as a one_d_array --- a 1D data structure that allows push and pop (in contrast to 2D data structures)
+    new_one_d_array=walk_recursively_through_pitch(board, one_d_array, 0, 0, rows, columns, insert_row_0_indexed, insert_column_0_indexed,  to_be_inserted)
+    return new_one_d_array.reshape(board.shape[0], board.shape[1])
+
+
+
 # 3 values are possible on the board / matrix:
 # 0 - nothing played here yet
 # 1 - Player 1 has set a stone here
 # 2 - Player 2 has set a stone here 
 def insert_stone(board, current_player_input_column, current_player):
     # user indexing to 0-indexing of matrices
-    selected_column=one_to_zero_indexing(current_player_input_column)
+    selected_column_zero_indexed=one_to_zero_indexing(current_player_input_column)
     
     #slice out the column array
-    selected_column_array = board[:,selected_column]
+    selected_column_array = board[:,selected_column_zero_indexed]
     
     #find empty slot
-    empty_slot = np.max(np.where(selected_column_array == 0))
+    empty_slot_zero_indexed = np.max(np.where(selected_column_array == 0))
 
-    number_of_rows = board.shape[0]
-    number_of_columns = board.shape[1]
-
-    #fill up updated board 
-    updated_board = [ [ new_board(i,j,empty_slot,selected_column,current_player,board) for j in range(0,number_of_columns)] for i in range(0,number_of_rows)]
-    updated_board_asarray = np.asarray(updated_board)
-    return updated_board_asarray
+    # functional! - analogue to board[empty_slot_zero_indexed][selected_column_zero_indexed]=current_player
+    # I tend to say: this is not KISS!
+    return walk_through_pitch_replace_one_number(board, empty_slot_zero_indexed, selected_column_zero_indexed, current_player)
 
 
 #recursion without using mutable variables:
@@ -182,13 +211,13 @@ def recursive_new_round(board,current_player):
             current_player_input_column=int(current_player_input)
             
             if does_column_has_space(board, current_player_input_column):
-                board=insert_stone(board, current_player_input_column, current_player)
+                new_board=insert_stone(board, current_player_input_column, current_player)
                 # change the current_player 
                 if current_player==1:
                     current_player=2
                 else:
                     current_player=1
-                recursive_new_round(board,current_player)
+                recursive_new_round(new_board,current_player)
             else:
                 print("Column is already full! - Try again inserting into another column!")
                 recursive_new_round(board,current_player)

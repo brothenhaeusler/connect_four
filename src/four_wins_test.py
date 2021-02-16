@@ -11,6 +11,8 @@ insert_stone
 )
 import numpy as np
 
+
+
 def test_check_whether_game_definitely_undecided():
     #test 1:
     rows=7

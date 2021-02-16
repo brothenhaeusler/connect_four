@@ -29,7 +29,7 @@ I use [make](https://en.wikipedia.org/wiki/Make_(software)) for local build-mana
 [Here](Makefile) is my Makefile.
 
 ### 6 Unit Tests
-[Here](src/four_wins_functional_test.py) they are. They get automatically run using my [Makefile](Makefile) or via [GitHub](https://github.com/brothenhaeusler/connect_four/blob/main/.github/workflows/python-app.yml) [Action](https://github.com/brothenhaeusler/connect_four/actions). They also include one visual test (commented out) for testing the create_board() function to be found [here](src/four_wins_functions_functional.py).  
+[Here](src/four_wins_functional_test.py) they are. They get automatically run using my [Makefile](Makefile) or via [GitHub](https://github.com/brothenhaeusler/connect_four/blob/main/.github/workflows/python-app.yml) [Action](https://github.com/brothenhaeusler/connect_four/actions). They also include one visual test (commented out) for testing the create_board() function defined in [here](src/four_wins_functions_functional.py).  
 
 ### 7 Continuous Delivery
 I used GitHub Action for that purpose. See [here](https://github.com/brothenhaeusler/connect_four/blob/main/.github/workflows/python-app.yml). As can be seen in my latest builds, I included in there: Metrics generation, Unit Testing as well as generating the user documentation for the program. Last time I checked, it was working [fine](https://github.com/brothenhaeusler/connect_four/actions).

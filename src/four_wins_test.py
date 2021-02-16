@@ -1,7 +1,16 @@
 #! /usr/local/opt/python/bin/python3.8
 
 #necessary condition
-from four_wins_functions import *
+from four_wins_functions import (
+create_board,
+is_game_over,
+check_whether_game_definitely_undecided, 
+is_current_player_input_legitimate, 
+does_column_has_space, 
+one_to_zero_indexing,
+insert_stone
+)
+import numpy as np
 
 def test_check_whether_game_definitely_undecided():
     #test 1:
@@ -17,18 +26,15 @@ def test_check_whether_game_definitely_undecided():
     board[rows-1, columns-1]=0
     assert not check_whether_game_definitely_undecided(board)
 
-
-
-
-def test_check_game_over():
-    # Tests to check whether check_game_over function works
-    #test1:
+def test_is_game_over():
+    # Tests to check whether is_game_over function works
+    #test1: no entries
     rows=6
     columns=7
     board = create_board(rows,columns)
-    assert not check_game_over(board)
+    assert not is_game_over(board)
 
-    # test 2
+    # test 2: horizontal line
     rows_board_1=7
     columns_board_1=9
     board_1 = create_board(rows_board_1,columns_board_1)
@@ -37,9 +43,9 @@ def test_check_game_over():
     board_1[0,2] = 1
     board_1[0,3] = 1
     board_1[0,4] = 1
-    assert check_game_over(board_1)
+    assert is_game_over(board_1)
 
-    #test 3
+    #test 3: vertical line
     rows_board_2=4
     columns_board_2=8
     board_2 = create_board(rows_board_2,columns_board_2)
@@ -48,9 +54,9 @@ def test_check_game_over():
     board_2[1,0] = 2
     board_2[2,0] = 2
     board_2[3,0] = 2
-    assert check_game_over(board_2)
+    assert is_game_over(board_2)
 
-    #test 4
+    #test 4: diagonal_upper_left_to_lower_right
     rows_board_3=5
     columns_board_3=8
     board_3 = create_board(rows_board_3,columns_board_3)
@@ -59,9 +65,9 @@ def test_check_game_over():
     board_3[2,2] = 1
     board_3[3,3] = 1 
     board_3[4,4] = 1
-    assert check_game_over(board_3)
+    assert is_game_over(board_3)
 
-#test 5
+    #test 5: diagonal_lower_left_to_upper_right
     rows_board_4=6
     columns_board_4=8
     board_4 = create_board(rows_board_4,columns_board_4)
@@ -70,7 +76,29 @@ def test_check_game_over():
     board_4[1,2] = 2
     board_4[2,1] = 2
     board_4[3,0] = 2
-    assert check_game_over(board_4)
+    assert is_game_over(board_4)
+
+    #test 6: vertical line at the edge
+    rows_board_5=4
+    columns_board_5=8
+    board_5 = create_board(rows_board_5,columns_board_5)
+
+    board_5[0,columns_board_5 -1] = 2
+    board_5[1,columns_board_5 -1] = 2
+    board_5[2,columns_board_5 -1] = 2
+    board_5[3,columns_board_5 -1] = 2
+    assert is_game_over(board_5)
+
+    # test 7: horizontal line at the edge
+    rows_board_6=7
+    columns_board_6=9
+    board_6 = create_board(rows_board_6,columns_board_6)
+
+    board_6[rows_board_6 -1,1] = 1
+    board_6[rows_board_6 -1,2] = 1
+    board_6[rows_board_6 -1,3] = 1
+    board_6[rows_board_6 -1,4] = 1
+    assert is_game_over(board_6)
 
 def test_is_current_player_input_legitimate():
     #test 1
@@ -81,7 +109,6 @@ def test_is_current_player_input_legitimate():
     player_input_2='3'
     number_of_columns_2=7
     assert is_current_player_input_legitimate(player_input_2,number_of_columns_2)
-
 
 def test_does_column_has_space():
     board = create_board(5,5)

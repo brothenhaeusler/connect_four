@@ -45,7 +45,6 @@ def insert_stone(board, current_player_input_column, current_player):
     new_board[empty_slot,selected_column] = current_player
     return new_board
 
-
 #recursion without using mutable variables:
 def check_whether_game_definitely_undecided(board_slice):
     #extract all zeros from the first row
@@ -58,7 +57,8 @@ def check_whether_game_definitely_undecided(board_slice):
     if len(zero_array) == 0:
         #exit condition for recursion - the board has fully been walked through
         if len(board_slice[:,1]) == 1:
-            return 'board is definitely undecided'
+            print('board is definitely undecided')
+            return True
         else:
             #recursion with a smaller board
             return check_whether_game_definitely_undecided(board_slice[1:,:])
@@ -66,62 +66,83 @@ def check_whether_game_definitely_undecided(board_slice):
         # board has still some 'unplayed' spots
         return False
 
-# checks whether four stones are in a row. Returns String with the respective answer to the Question.
-def check_game_over(board):
-    number_of_columns = board.shape[1]
-    number_of_rows = board.shape[0]
-    # check columns for 4-in-a-row
-    for j in range(0,number_of_columns):
-        for i in range(0,number_of_rows-3):
-            #slicing: slice out relevant subarrays of size 4
-            if np.all(board[i:(i+4),j] == np.array([1,1,1,1])):
-                # Strings are recognized as True
-                return "player1_wins"
-            if np.all(board[i:(i+4),j] == np.array([2,2,2,2])): 
-                # Strings are recognized as True
-                return "player2_wins"
-            
-
-    # check rows for 4-in-a-column
-    for i in range(0,number_of_rows):
-        for j in range(0,number_of_columns-3):
-            #slicing: slice out relevant subarrays of size 4
-            if np.all(board[i,j:(j+4)] == np.array([1,1,1,1])):
-                # Strings are recognized as True
-                return "player1_wins"
-            if np.all(board[i,j:(j+4)] == np.array([2,2,2,2])): 
-                # Strings are recognized as True
-                return "player2_wins"
-    
-    # check diagonals upwards 
-    for i in range(0,number_of_rows - 3):
-        for j in range(0,number_of_columns - 3):
-            if board[i,j] == 1 and board[i+1,j+1] == 1 and board[i+2,j+2] == 1 and board[i+3,j+3] == 1:
-                # Strings are recognized as True
-                return "player1_wins"
-            if board[i,j] == 2 and board[i+1,j+1] == 2 and board[i+2,j+2] == 2 and board[i+3,j+3] == 2:
-                # Strings are recognized as True
-                return "player2_wins"
-
-    # check diagonals downwards (but maybe a bit from an unexpected direction)
-    for i in range(0,number_of_rows-3):
-        for j in range(0,number_of_columns - 3):
-            if board[i,j+3] == 1 and board[i+1,j+2] == 1 and board[i+2,j+1] == 1 and board[i+3,j] == 1:
-                # Strings are recognized as True
-                return "player1_wins"
-            if board[i,j+3] == 2 and board[i+1,j+2] == 2 and board[i+2,j+1] == 2 and board[i+3,j] == 2:
-                # Strings are recognized as True
-                return "player2_wins"
-
-    result=check_whether_game_definitely_undecided(board)
-    if result:
-        #result is in fact a result string
-        result_string=result
-        return result_string
+def are_there_consecutive_four_in_a_line(line):
+    if len(line) >3:
+        #are the first 4 entries the same? and if they are: are they entries of player 1 or player 2?
+        player_1=1
+        player_2=2
+        if line[0] == line[1] and line[1] == line[2] and line[2] == line[3] \
+            and (line[0] == player_1 or line[0] == player_2):
+            #Congrat messages
+            print()
+            print('------------------------------')
+            if line[0] == player_1:
+                print('Player 1 wins, congrats :)') 
+            else: 
+                print('Player 2 wins, congrats :)') 
+            print('------------------------------')
+            print('Winning board:')
+            return True
+        else:
+            return are_there_consecutive_four_in_a_line(line[1:])
     else:
-        #if every game check concerning the game being over turns out to be false, the game is not over
-        return False
+        return False 
 
+def are_there_consecutive_four_horizontally(board_slice):
+    if board_slice.shape[0] > 0:
+        line= list(board_slice[0])
+        if are_there_consecutive_four_in_a_line(line):
+            return True
+        else:
+            return are_there_consecutive_four_horizontally(board_slice[1:])
+    else:
+        return False
+    #last slice returns a 1D array
+    # else:
+    #     line= board_slice
+    #     return are_there_consecutive_four_in_a_line(line)
+
+def are_there_consecutive_four_vertically(board):
+    #reuse code: transpose matrix and use the _horizontally function:
+    return are_there_consecutive_four_horizontally(np.transpose(board))
+
+def recursive_diagonal_upper_left_to_lower_right_line_checker(board,i):
+    #abortion, if the diagonal plane is just empty
+    if board.diagonal(i).shape[0]==0: 
+        return False
+    else:  
+        if are_there_consecutive_four_in_a_line(board.diagonal(i)):
+            return True
+        else: 
+            return recursive_diagonal_upper_left_to_lower_right_line_checker(board,i+1)
+
+def are_there_four_diagonal_upper_left_to_lower_right(board):
+    # starting point is negative, because we want to s
+    start_int_recursive_line_checker= - len(board[:,0]) + 1
+    return recursive_diagonal_upper_left_to_lower_right_line_checker(board,start_int_recursive_line_checker)
+
+def are_there_four_diagonal_lower_left_to_upper_right(board):
+    #mirroring the board at the horizontal, middle axis, one can use the
+    # are_there_four_diagonal_upper_left_to_lower_right - function 
+    # (please visualize it graphically for you)
+    return are_there_four_diagonal_upper_left_to_lower_right(np.flip(board,axis=0))
+
+def is_game_over(board):
+    return are_there_four_diagonal_upper_left_to_lower_right(board) \
+        or are_there_four_diagonal_lower_left_to_upper_right(board) \
+        or are_there_consecutive_four_horizontally(board) \
+        or are_there_consecutive_four_vertically(board) \
+        or check_whether_game_definitely_undecided(board)
+    
+    #result=check_whether_game_definitely_undecided(board)
+    # if result:
+    #     #result is in fact a result string
+    #     result_string=result
+    #     return result_string
+    # else:
+    #     #if every game check concerning the game being over turns out to be false, the game is not over
+    #     return False
+   
 def is_current_player_input_legitimate(current_player_input, number_of_columns):
     #check length, only one character permitted
     if(len(current_player_input) > 1):
@@ -151,7 +172,7 @@ def execute_game():
     print("Have fun!")
     print()
 
-    while not check_game_over(board):
+    while not is_game_over(board):
         print()
         print("Player", current_player, "\'s turn!")
         print(board)
@@ -173,12 +194,11 @@ def execute_game():
                     current_player=1
             else:
                 print("Column is already full! - Try again inserting into another column!")
-                continue
+                
         else:
             print("Input hasn\'t been properly recognized. Try again writing a number between", 
-                  1, "and", number_of_columns, "!")
-            continue 
+                  1, "and", number_of_columns, "!") 
     print()
-    print(check_game_over(board))
+    #print(check_game_over(board))
     print(board)
 

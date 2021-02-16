@@ -21,7 +21,7 @@ I used Sonarqube for delivering the Metrics as required. The results can be acce
 # include link
 
 ### 4 Clean Code Development
-[the cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open when programming)
+[the cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open while programming)
 # include link
 and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
 * before: sth about adding 1, modulo, etc.. -- now: embarrassingly [simple](doc/clean_code/code_examples/KISS%20in%20practice.png)
@@ -30,8 +30,8 @@ and [4](doc/clean_code/code_examples) examples, where I applied different clean 
 * [avoidance of negative conditionals and good commenting](doc/clean_code/code_examples/combination.png)
 
 ### 5 Build Management
-I used a Makefile for local build-management. I didn't do building before (sorry :) ) -- especially automated Unit Tests seem to be quite valuable in the context of later code changes
-# link the Makefile
+I use [make](https://en.wikipedia.org/wiki/Make_(software)) for local build-management. I didn't do building before (sorry :) ) -- especially automated Unit Tests seem to be quite valuable in the context of later code changes.
+[Here](Makefile) is my Makefile.
 
 ### 6 Unit Tests
 Here<> they are. They get automatically run using CICD 

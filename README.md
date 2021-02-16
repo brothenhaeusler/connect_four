@@ -19,7 +19,7 @@ I used Radon for delivering the Metrics as required. This in particular includes
 
 ### 4 Clean Code Development
 [The cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open while programming) and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
-* before: sth about adding 1, modulo, etc.. -- now: embarrassingly [simple](doc/clean_code/code_examples/KISS%20in%20practice.png)
+* before: sth about adding 1, modulo, etc.. -- now: embarrassingly [simple](doc/clean_code/code_examples/KISS_in_practice.png)
 * [no magic numbers](doc/clean_code/code_examples/no%20magic%20numbers.png)
 * before: I called the variable 'player' --- now: more [precise naming](doc/clean_code/code_examples/precise%20naming.png)
 * [avoidance of negative conditionals and good commenting](doc/clean_code/code_examples/avoidance_of_negative_conditionals_and_good_commenting.png)

@@ -1,21 +1,12 @@
-# Exercise A: Connect four - the game
-
-This game is played in the terminal by executing the four_wins.py file. 
-
-It is developed to be played by 2 players who alternately should get access to the keyboard to make their respective inputs to the game. 
-
-The first player gets chosen randomly by the computer, so it would be good to first agree on who's player 1 and 2 first.  
-
-The game is modelled after the dimensions of the original connect four game - the feature to play the game within a field of different dimensions may come in following versions. 
-
-### And now: have some fun :)
+# Exercise A: 
+See [here](doc/documentation.pdf) - at my documentation
 
 # Exercise B: 
 
 ### 1 UML
 3 UML diagrams to look at. The diagrams are mostly artificially pumped up :). My core project consists of a command line game.
 
-* A [Use case diagram](doc/uml/Use%20Case%20Diagram%20of%20the%20Gaming%20Website.pdf) that visualizes different use cases for both the users, the admin and the proprietor.
+* A [Use case diagram](doc/uml/use_case_diagram_of_the_gaming_website.pdf) that visualizes different use cases for both the users, the admin and the proprietor.
 * A [Sequence diagram](doc/uml/Sequence%20Diagram.pdf) to visualize how different entities of a website 'would' interact in case of a certain procedure of activities.
 * An [Activity diagram](doc/uml/Sequence%20Diagram.pdf) that shows an imaginary string of actions and possibilities, when accessing the website. 
 

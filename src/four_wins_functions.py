@@ -136,15 +136,6 @@ def is_game_over(board):
         or are_there_consecutive_four_horizontally(board) \
         or are_there_consecutive_four_vertically(board) \
         or check_whether_game_definitely_undecided(board)
-    
-    #result=check_whether_game_definitely_undecided(board)
-    # if result:
-    #     #result is in fact a result string
-    #     result_string=result
-    #     return result_string
-    # else:
-    #     #if every game check concerning the game being over turns out to be false, the game is not over
-    #     return False
    
 def is_current_player_input_legitimate(current_player_input, number_of_columns):
     #check length, only one character permitted

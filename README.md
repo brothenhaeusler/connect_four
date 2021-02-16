@@ -25,17 +25,17 @@ I used Radon for delivering the Metrics as required. This in particular includes
 * before: sth about adding 1, modulo, etc.. -- now: embarrassingly [simple](doc/clean_code/code_examples/KISS%20in%20practice.png)
 * [no magic numbers](doc/clean_code/code_examples/no%20magic%20numbers.png)
 * before: I called the variable 'player' --- now: more [precise naming](doc/clean_code/code_examples/precise%20naming.png)
-* [avoidance of negative conditionals and good commenting](doc/clean_code/code_examples/combination.png)
+* [avoidance of negative conditionals and good commenting](doc/clean_code/code_examples/avoidance_of_negative_conditionals_and_good_commenting.png)
 
 ### 5 Build Management
 I use [make](https://en.wikipedia.org/wiki/Make_(software)) for local build-management. I didn't do building before (sorry :) ) -- especially automated Unit Tests seem to be quite valuable in the context of later code changes.
 [Here](Makefile) is my Makefile.
 
 ### 6 Unit Tests
-[Here](src/four_wins_test.py) they are. They get automatically run using my [Makefile](Makefile) or via GitHub Action. They also include one visual test (commented out) for testing the create_board() function to be found [here](src/four_wins_functions.py).  
+[Here](src/four_wins_test.py) they are. They get automatically run using my [Makefile](Makefile) or via GitHub Action. They also include one visual test (commented out) for testing the create_board() function to be found [here](src/four_wins_functional_test.py).  
 
 ### 7 Continuous Delivery
-I used GitHub Action for that purpose. See [here](https://github.com/brothenhaeusler/connect_four/actions). As can be seen in my latest builds, I included in there: Metrics generation, Unit Testing as well as generating the user documentation for the program. 
+I used GitHub Action for that purpose. See [here](https://github.com/brothenhaeusler/connect_four/blob/main/.github/workflows/python-app.yml). As can be seen in my latest builds, I included in there: Metrics generation, Unit Testing as well as generating the user documentation for the program. Last time I checked, it was working [fine](https://github.com/brothenhaeusler/connect_four/actions).
 
 ### 8 IDE
 I used VisualStudio Code for that effect due to recent (last 5 years) developments and investments through Microsoft. 

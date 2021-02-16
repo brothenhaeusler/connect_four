@@ -166,7 +166,7 @@ def is_current_player_input_legitimate(current_player_input, number_of_columns):
 
 # This is a recursive function that checks whether the game is over and runs one round of the game if the game is not over
 # Otherwise it prints the winning board
-def one_round(board,current_player):
+def recursive_new_round(board,current_player):
     
     if not is_game_over(board):
         number_of_columns = board.shape[1]
@@ -188,14 +188,13 @@ def one_round(board,current_player):
                     current_player=2
                 else:
                     current_player=1
-                one_round(board,current_player)
+                recursive_new_round(board,current_player)
             else:
                 print("Column is already full! - Try again inserting into another column!")
-                one_round(board,current_player)
-                
+                recursive_new_round(board,current_player)
         else:
             print("Input hasn\'t been properly recognized. Try again!")
-            one_round(board,current_player)
+            recursive_new_round(board,current_player)
     else:
         print("Winning board:")
         print(board)
@@ -220,4 +219,4 @@ def execute_game():
     print("Player 2 positions on the board are depicted as 2")
     print("Have fun!")
     print()
-    one_round(board,current_player)
+    recursive_new_round(board,current_player)

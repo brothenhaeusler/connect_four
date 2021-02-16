@@ -1,6 +1,6 @@
 #! /usr/local/opt/python/bin/python3.8
 
-from four_wins_functions import (
+from four_wins_functions_functional import (
 create_board,
 is_game_over,
 check_whether_game_definitely_undecided, 

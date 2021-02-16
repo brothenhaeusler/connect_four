@@ -51,6 +51,6 @@ The DSL implemented by me is as regards subject matter quite remote from my game
 * only final data structures
 * side effect free functions
 * the use of higher-order functions (filter)
-* functions as parameters and return values
-* use of an anonymous function (lambda)
-.. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, it most certainly shoots KISS - and for a project as simple as mine, including a higher-order function proofed to b. For that matter I included also a mostly functional (without only having final data structures) [readable version of my main functions](src/four_wins_functions.py).
+* functions as parameters and return values (filter)
+* use of an anonymous function (lambda)   
+.. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, it most certainly shoots KISS - as well as using only final data structures. My prejudice is also  For that matter I included also a mostly functional (without only having final data structures) [readable version of my main functions](src/four_wins_functions.py).

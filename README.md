@@ -44,12 +44,13 @@ I used VisualStudio Code for that effect due to recent (last 5 years) developmen
 [Here](doc/ide/VisualStudioCode_shortcuts.docx) is my cheatsheet (for Mac). Unfortunately, it is written in - you probably guessed it - MS Word :). 
 
 ### 9 DSL
-The DSL implemented by me is used independent from my project. It implemented my [2nd favourite topic](doc/dsl/flowers.py) besides writing Clean Code ;):D. Actually the latter can't quite compete with reading [Martin Wolf opinion pieces](https://www.ft.com/martin-wolf). 
+The DSL implemented by me is as regards subject matter quite remote from my game project. It relates to my [2nd favourite topic](doc/dsl/flowers.py) besides writing Clean Code ;):D. Actually the latter can't quite compete with reading [Martin Wolf opinion pieces](https://www.ft.com/martin-wolf). 
 
 ### 10 Functional Programming
-only final data structures
-(mostly) side effect free functions
-the use of higher-order functions
-functions as parameters and return values
-use closures / anonymous functions
-# 5 links
+"Here I stand, I can do no other...". Actually I can't proof but only propose my solution as consistent with the following functional programming principles:
+* only final data structures
+* side effect free functions
+* the use of higher-order functions 
+* functions as parameters and return values
+* use of an anonymous function (lambda)
+.. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, it most certainly shoots KISS - and for a project as simple as mine, including a higher-order function proofed to b

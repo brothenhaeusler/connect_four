@@ -22,19 +22,22 @@ The game is modelled after the dimensions of the original connect four game - th
 
 ### 2 DDD
 I modelled the different domains within a Problem space 
-#include link
+# include link
 and the bounded contexts and the relationships between them.
-#include link
+# include link
 
 ### 3 Metrics
 I used Sonarqube for delivering the Metrics as required. The results can be accessed here.
 # include link
 
 ### 4 Clean Code Development
-the cheatsheet
+[the cheatsheet](doc/clean_code/cheatsheet&#32clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open when programming)
 # include link
-and 5 different instances, where I applied different clean code principles.
-# include links
+and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
+* [KISS](doc/clean_code/code_examples/KISS&#32in&#32practice.png)
+* [no magic numbers](doc/clean_code/code_examples/no&#32magic&#32numbers.png)
+* [precise naming](doc/clean_code/code_examples/precise&#32naming.png)
+* [avoidance of negative conditionals and good commenting](doc/clean_code/code_examples/combination.png)
 
 ### 5 Build Management
 I used a Makefile for local build-management. I didn't do building before (sorry :) ) -- especially automated Unit Tests seem to be quite valuable in the context of later code changes

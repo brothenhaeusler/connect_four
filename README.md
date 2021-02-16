@@ -1,5 +1,6 @@
+Welcome!
 # Exercise A: 
-See [here](doc/documentation.pdf) - at my documentation
+Code execution [here](src/four_wins.py) - and here's my [documentation](doc/documentation.pdf)
 
 # Exercise B: 
 
@@ -17,7 +18,7 @@ and the bounded contexts and the relationships between them.
 # include link
 
 ### 3 Metrics
-I used Radon for delivering the Metrics as required. This in particular includes the Cyclomatic complexity and the Halstead metrics. The The results can be accessed in my latest[GitHub Workflow](actions).
+I used Radon for delivering the Metrics as required. This in particular includes the Cyclomatic complexity and the Halstead metrics. The The results can be accessed in my latest [GitHub Workflow](https://github.com/brothenhaeusler/connect_four/actions).
 
 ### 4 Clean Code Development
 [the cheatsheet](doc/clean_code/cheatsheet%20clean_code.docx)  (Sorry for the format, but that's what I unfortunately have open while programming) and [4](doc/clean_code/code_examples) examples, where I applied different clean code principles.
@@ -34,7 +35,7 @@ I use [make](https://en.wikipedia.org/wiki/Make_(software)) for local build-mana
 [Here](src/four_wins_test.py) they are. They get automatically run using my [Makefile](Makefile) or via GitHub Action. They also include one visual test (commented out) for testing the create_board() function to be found [here](src/four_wins_functions.py).  
 
 ### 7 Continuous Delivery
-I used GitHub Action for that purpose. See [here](https://github.com/brothenhaeusler/connect_four/actions). As you can see in my latest builds, 
+I used GitHub Action for that purpose. See [here](https://github.com/brothenhaeusler/connect_four/actions). As can be seen in my latest builds, I included in there: Metrics generation, Unit Testing as well as generating the user documentation for the program. 
 
 ### 8 IDE
 I used VisualStudio Code for that effect due to recent (last 5 years) developments and investments through Microsoft. 
@@ -51,4 +52,4 @@ The DSL implemented by me is - as regards subject matter - quite remote from my 
 * functions as parameters and return values (filter)
 * use of an anonymous function (lambda)   
 
-.. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, notably the 'final data structure' criterion most certainly shoots KISS. My prejudice is, that that is also the case for a significant part of experienced programmers. For that matter I included also a mostly functional (without only having final data structures) [readable version of my main functions](src/four_wins_functions.py).
+.. all happening in [here](src/four_wins_functions_functional.py). I have to declare that there's a certain tension between writing functional and writing clean code. Especially for amateurs, notably the 'final data structure' criterion most certainly shoots KISS. My prejudice is, that that is also the case for a significant part of the experienced programmers. For that matter I also included a mostly functional (without only having final data structures) [readable version of my main functions](src/four_wins_functions.py).

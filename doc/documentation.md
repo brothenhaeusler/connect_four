@@ -1,6 +1,6 @@
-Connect four - the game
+# Connect four - the game
 
-This game is played in the terminal by executing the four_wins.py file. 
+This game is played in the terminal by executing the [four_wins.py](src/four_wins.py) file. 
 
 It is developed to be played by 2 players who alternately should get access to the keyboard to make their respective inputs to the game. 
 

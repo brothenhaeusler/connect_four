@@ -8,18 +8,17 @@ is_current_player_input_legitimate,
 does_column_has_space, 
 one_to_zero_indexing,
 insert_stone,
-walk_through_pitch_replace_one_number
-)
+give_back_new_board_with_one_replaced_number)
 import numpy as np
 
-def test_walk_through_pitch_replace_one_number():
+def test_give_back_new_board_with_one_replaced_number():
     rows=7
     columns=4
     board = np.ones((rows,columns),dtype=np.int8)
     insert_row_0_indexed = rows-2
     insert_column_0_indexed= columns-3 
     to_be_inserted=97
-    assert to_be_inserted == walk_through_pitch_replace_one_number(board, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)[insert_row_0_indexed][insert_column_0_indexed]
+    assert to_be_inserted == give_back_new_board_with_one_replaced_number(board, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)[insert_row_0_indexed][insert_column_0_indexed]
 
     #test 2
     rows_0=9
@@ -28,7 +27,7 @@ def test_walk_through_pitch_replace_one_number():
     insert_row_0_indexed_0 = rows-3
     insert_column_0_indexed_0= columns-2
     to_be_inserted_0=94
-    assert to_be_inserted_0 == walk_through_pitch_replace_one_number(board_0, insert_row_0_indexed_0, insert_column_0_indexed_0, to_be_inserted_0)[insert_row_0_indexed_0][insert_column_0_indexed_0]
+    assert to_be_inserted_0 == give_back_new_board_with_one_replaced_number(board_0, insert_row_0_indexed_0, insert_column_0_indexed_0, to_be_inserted_0)[insert_row_0_indexed_0][insert_column_0_indexed_0]
 
     rows_1=5
     columns_1=9
@@ -36,7 +35,7 @@ def test_walk_through_pitch_replace_one_number():
     insert_row_0_indexed_1 = rows-4
     insert_column_0_indexed_1= columns-3 
     to_be_inserted_1=64
-    assert to_be_inserted_1 == walk_through_pitch_replace_one_number(board_1, insert_row_0_indexed_1, insert_column_0_indexed_1, to_be_inserted_1)[insert_row_0_indexed_1][insert_column_0_indexed_1]
+    assert to_be_inserted_1 == give_back_new_board_with_one_replaced_number(board_1, insert_row_0_indexed_1, insert_column_0_indexed_1, to_be_inserted_1)[insert_row_0_indexed_1][insert_column_0_indexed_1]
 
     rows_2=6
     columns_2=7
@@ -44,7 +43,7 @@ def test_walk_through_pitch_replace_one_number():
     insert_row_0_indexed_2 = rows-4
     insert_column_0_indexed_2= columns-2
     to_be_inserted_2=42
-    assert to_be_inserted_2 == walk_through_pitch_replace_one_number(board_2, insert_row_0_indexed_2, insert_column_0_indexed_2, to_be_inserted_2)[insert_row_0_indexed_2][insert_column_0_indexed_2]
+    assert to_be_inserted_2 == give_back_new_board_with_one_replaced_number(board_2, insert_row_0_indexed_2, insert_column_0_indexed_2, to_be_inserted_2)[insert_row_0_indexed_2][insert_column_0_indexed_2]
 
 
 def test_check_whether_game_definitely_undecided():

@@ -26,9 +26,9 @@ def does_column_has_space(board, current_player_input_column):
 
 
 # essentially gives back the transformed 2D board (with the inserted value) in the form of a 1D array.
-# functional!
-def walk_recursively_through_pitch(board, one_d_array, current_row, current_column, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted):
-    # fundamental decision: what gets inserted into the new _to be array one_d_array_new?
+# functional! Unfortunately not KISS
+def give_recursively_back_one_d_array_with_one_replaced_number(board, one_d_array, current_row, current_column, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted):
+    # fundamental decision: what gets inserted into the new _to be array new_one_d_array?
     if current_column == insert_column_0_indexed and current_row == insert_row_0_indexed:
         #push on a new number
         new_one_d_array=np.append(one_d_array, to_be_inserted)
@@ -43,26 +43,26 @@ def walk_recursively_through_pitch(board, one_d_array, current_row, current_colu
         if current_row +1 ==  rows:
             return new_one_d_array 
         else:
-            #only set the new variables in calling the new function
+            #only set the new variables in calling the new function. Because: functional
             # go one row down (rows are in the first dimension)
-            return walk_recursively_through_pitch(board, new_one_d_array, current_row+1, 0, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)
+            return give_recursively_back_one_d_array_with_one_replaced_number(board, new_one_d_array, current_row+1, 0, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)
     else:
+        #only set the new variables in calling the new function. Because: functional
         # just walk down the board one column further
-        return walk_recursively_through_pitch(board, new_one_d_array, current_row, current_column + 1, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)
+        return give_recursively_back_one_d_array_with_one_replaced_number(board, new_one_d_array, current_row, current_column + 1, rows, columns, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted)
 
 
-
-#preparation and postpreparation function for walk_recurively_through_pitch() 
+# Preparation and postpreparation function for give_recursively_back_one_d_array_with_one_replaced_number(..) 
 # functional!
-# essentially returns a new 2D board with to_be_inserted at the right place
-def walk_through_pitch_replace_one_number(board, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted):
+# essentially returns a new 2D board with to_be_inserted at the right place for the (old board and the indexes and the to_be_inserted)
+def give_back_new_board_with_one_replaced_number(board, insert_row_0_indexed, insert_column_0_indexed, to_be_inserted):
     rows=board.shape[0]
     columns=board.shape[1]
     # trick: 2D to 1D in order to get functional
     one_d_array=np.zeros(0, dtype=np.int8)
     # we need to call the recursive function with the walking variable current_column (instantiated with 0)
     # as well as a one_d_array --- a 1D data structure that allows push and pop (in contrast to 2D data structures)
-    new_one_d_array=walk_recursively_through_pitch(board, one_d_array, 0, 0, rows, columns, insert_row_0_indexed, insert_column_0_indexed,  to_be_inserted)
+    new_one_d_array=give_recursively_back_one_d_array_with_one_replaced_number(board, one_d_array, 0, 0, rows, columns, insert_row_0_indexed, insert_column_0_indexed,  to_be_inserted)
     return new_one_d_array.reshape(board.shape[0], board.shape[1])
 
 
@@ -83,7 +83,7 @@ def insert_stone(board, current_player_input_column, current_player):
 
     # functional! - analogue to board[empty_slot_zero_indexed][selected_column_zero_indexed]=current_player
     # I tend to say: this is not KISS!
-    return walk_through_pitch_replace_one_number(board, empty_slot_zero_indexed, selected_column_zero_indexed, current_player)
+    return give_back_new_board_with_one_replaced_number(board, empty_slot_zero_indexed, selected_column_zero_indexed, current_player)
 
 
 #recursion without using mutable variables:
@@ -109,7 +109,7 @@ def check_whether_game_definitely_undecided(board_slice):
 
 def are_there_consecutive_four_in_a_line(line):
     if len(line) >3:
-        #are the first 4 entries the same? and if they are: are they entries of player 1 or player 2?
+        #are the first 4 entries the same? and if they are: are they entries of either player 1 or player 2?
         player_1=1
         player_2=2
         if line[0] == line[1] and line[1] == line[2] and line[2] == line[3] \
@@ -128,6 +128,7 @@ def are_there_consecutive_four_in_a_line(line):
     else:
         return False 
 
+# functional! -> recursion
 def are_there_consecutive_four_horizontally(board_slice):
     if board_slice.shape[0] > 0:
         line= list(board_slice[0])
@@ -137,11 +138,8 @@ def are_there_consecutive_four_horizontally(board_slice):
             return are_there_consecutive_four_horizontally(board_slice[1:])
     else:
         return False
-    #last slice returns a 1D array
-    # else:
-    #     line= board_slice
-    #     return are_there_consecutive_four_in_a_line(line)
 
+# functional
 def are_there_consecutive_four_vertically(board):
     #reuse code: transpose matrix and use the _horizontally function:
     return are_there_consecutive_four_horizontally(np.transpose(board))
@@ -174,14 +172,6 @@ def is_game_over(board):
         or are_there_consecutive_four_vertically(board) \
         or check_whether_game_definitely_undecided(board)
     
-    #result=check_whether_game_definitely_undecided(board)
-    # if result:
-    #     #result is in fact a result string
-    #     result_string=result
-    #     return result_string
-    # else:
-    #     #if every game check concerning the game being over turns out to be false, the game is not over
-    #     return False
    
 def is_current_player_input_legitimate(current_player_input, number_of_columns):
     #check length, only one character permitted
@@ -193,7 +183,7 @@ def is_current_player_input_legitimate(current_player_input, number_of_columns):
     else: 
         return False
 
-# This is a recursive function that checks whether the game is over and runs one round of the game if the game is not over
+# This is a recursive function that checks whether the game is over and runs a new round of the game if the game is not yet over
 # Otherwise it prints the winning board
 def recursive_new_round(board,current_player):
     
@@ -232,7 +222,6 @@ def recursive_new_round(board,current_player):
 
 def execute_game():
     # set the board parameters like in the original game with 7 columns and 6 rows
-
     number_of_rows=6
     number_of_columns=7
     

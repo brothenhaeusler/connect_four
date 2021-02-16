@@ -12,10 +12,7 @@ Code execution [here](src/four_wins.py) - and here's my [documentation](doc/docu
 * An [Activity diagram](doc/uml/Activity%20Diagram.pdf) that shows an imaginary string of actions and possibilities, when accessing the website. 
 
 ### 2 DDD
-I modelled the different domains within a Problem space 
-# include link
-and the bounded contexts and the relationships between them.
-# include link
+I modelled the different domains within a [problem space](doc/ddd/ddd_problemspace.pdf) and later on carved out the [bounded contexts and the relationships between them](doc/ddd/bounded_contexts_diagram.pdf). Beware the pixie dust of artificialness :).
 
 ### 3 Metrics
 I used Radon for delivering the Metrics as required. This in particular includes the Cyclomatic complexity and the Halstead metrics. The The results can be accessed in my latest [GitHub Workflow](https://github.com/brothenhaeusler/connect_four/actions).
